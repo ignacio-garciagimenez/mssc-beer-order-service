@@ -1,7 +1,7 @@
 package guru.sfg.beer.order.service.statemachine;
 
 import guru.sfg.beer.order.service.domain.BeerOrderEventEnum;
-import guru.sfg.beer.order.service.domain.OrderStatusEnum;
+import guru.sfg.beer.order.service.domain.BeerOrderStatusEnum;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
@@ -11,16 +11,16 @@ import java.util.EnumSet;
 
 @Configuration
 @EnableStateMachineFactory
-public class BeerOrderStateMachineConfig extends StateMachineConfigurerAdapter<OrderStatusEnum, BeerOrderEventEnum> {
+public class BeerOrderStateMachineConfig extends StateMachineConfigurerAdapter<BeerOrderStatusEnum, BeerOrderEventEnum> {
 
     @Override
-    public void configure(StateMachineStateConfigurer<OrderStatusEnum, BeerOrderEventEnum> states) throws Exception {
+    public void configure(StateMachineStateConfigurer<BeerOrderStatusEnum, BeerOrderEventEnum> states) throws Exception {
         states.withStates()
-                .initial(OrderStatusEnum.NEW)
-                .states(EnumSet.allOf(OrderStatusEnum.class))
-                .end(OrderStatusEnum.DELIVERED)
-                .end(OrderStatusEnum.DELIVERY_EXCEPTION)
-                .end(OrderStatusEnum.VALIDATION_EXCEPTION)
-                .end(OrderStatusEnum.ALLOCATION_EXCEPTION);
+                .initial(BeerOrderStatusEnum.NEW)
+                .states(EnumSet.allOf(BeerOrderStatusEnum.class))
+                .end(BeerOrderStatusEnum.DELIVERED)
+                .end(BeerOrderStatusEnum.DELIVERY_EXCEPTION)
+                .end(BeerOrderStatusEnum.VALIDATION_EXCEPTION)
+                .end(BeerOrderStatusEnum.ALLOCATION_EXCEPTION);
     }
 }
