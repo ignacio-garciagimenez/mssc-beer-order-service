@@ -9,7 +9,7 @@ import org.springframework.jms.support.converter.MessageType;
 @Configuration
 public class JmsConfig {
 
-    public static final String INVENTORY_VALIDATION_QUEUE = "validate-order";
+    public static final String VALIDATE_BEER_ORDER_QUEUE = "validate-order";
 
     @Bean
     public MessageConverter messageConverter() {
