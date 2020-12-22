@@ -32,6 +32,7 @@ public class BeerOrderStateMachineConfig extends StateMachineConfigurerAdapter<B
                 .end(BeerOrderStatusEnum.DELIVERY_EXCEPTION)
                 .end(BeerOrderStatusEnum.VALIDATION_EXCEPTION)
                 .end(BeerOrderStatusEnum.PICKED_UP)
+                .end(BeerOrderStatusEnum.CANCELED)
                 .end(BeerOrderStatusEnum.ALLOCATION_EXCEPTION);
     }
 
@@ -65,6 +66,18 @@ public class BeerOrderStateMachineConfig extends StateMachineConfigurerAdapter<B
                 .action(partialAllocationAction)
             .and().withExternal()
                 .source(BeerOrderStatusEnum.ALLOCATED).target(BeerOrderStatusEnum.PICKED_UP)
-                .event(BeerOrderEventEnum.BEER_ORDER_PICKED_UP);
+                .event(BeerOrderEventEnum.BEER_ORDER_PICKED_UP)
+            .and().withExternal()
+                .source(BeerOrderStatusEnum.PENDING_VALIDATION).target(BeerOrderStatusEnum.CANCELED)
+                .event(BeerOrderEventEnum.CANCEL_ORDER)
+            .and().withExternal()
+                .source(BeerOrderStatusEnum.VALIDATED).target(BeerOrderStatusEnum.CANCELED)
+                .event(BeerOrderEventEnum.CANCEL_ORDER)
+            .and().withExternal()
+                .source(BeerOrderStatusEnum.PENDING_ALLOCATION).target(BeerOrderStatusEnum.CANCELED)
+                .event(BeerOrderEventEnum.CANCEL_ORDER)
+            .and().withExternal()
+                .source(BeerOrderStatusEnum.ALLOCATED).target(BeerOrderStatusEnum.CANCELED)
+                .event(BeerOrderEventEnum.CANCEL_ORDER);
     }
 }
