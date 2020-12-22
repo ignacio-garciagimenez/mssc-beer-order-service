@@ -53,6 +53,7 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         }
     }
 
+    @Transactional
     @Override
     public void beerOrderAllocationPassed(BeerOrderDto beerOrderDto) {
         BeerOrder beerOrder = beerOrderRepository.getOne(beerOrderDto.getId());
