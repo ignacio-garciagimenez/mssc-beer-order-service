@@ -65,6 +65,7 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         updateAllocatedQty(beerOrderDto, beerOrder);
     }
 
+    @Transactional
     @Override
     public void beerOrderAllocationPendingInventory(BeerOrderDto beerOrderDto) {
         BeerOrder beerOrder = beerOrderRepository.getOne(beerOrderDto.getId());
@@ -73,6 +74,7 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         updateAllocatedQty(beerOrderDto, beerOrder);
     }
 
+    @Transactional
     @Override
     public void beerOrderAllocationFailed(BeerOrderDto beerOrderDto) {
         BeerOrder beerOrder = beerOrderRepository.getOne(beerOrderDto.getId());
