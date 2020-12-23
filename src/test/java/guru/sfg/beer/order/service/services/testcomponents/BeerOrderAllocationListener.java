@@ -22,7 +22,7 @@ public class BeerOrderAllocationListener {
     public void listen(AllocateOrderRequest request) {
         boolean allocationError = false;
         boolean pendingInventory = false;
-
+        boolean sendResponse = true;
 
         if (request.getBeerOrderDto().getCustomerRef() != null && request.getBeerOrderDto().getCustomerRef().equals("fail-allocation")) {
             allocationError = true;
@@ -31,6 +31,12 @@ public class BeerOrderAllocationListener {
         if (request.getBeerOrderDto().getCustomerRef() != null && request.getBeerOrderDto().getCustomerRef().equals("partial-allocation")) {
             pendingInventory = true;
         }
+
+        if (request.getBeerOrderDto().getCustomerRef() != null && request.getBeerOrderDto().getCustomerRef().equals("dont-allocate")) {
+            sendResponse = false;
+        }
+
+        if (!sendResponse) return;
 
         boolean finalPendingInventory = pendingInventory;
         BeerOrderDto beerOrderDto = request.getBeerOrderDto();
