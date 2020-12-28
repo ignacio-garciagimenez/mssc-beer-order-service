@@ -1,4 +1,4 @@
-package guru.sfg.brewery.model.events;
+package guru.sfg.brewery.model.event;
 
 import guru.sfg.brewery.model.BeerOrderDto;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AllocateOrderResult {
+public class AllocateOrderRequest {
     private BeerOrderDto beerOrderDto;
-    private Boolean allocationError;
-    private Boolean pendingInventory;
 }

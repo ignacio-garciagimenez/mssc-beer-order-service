@@ -4,7 +4,7 @@ import guru.sfg.beer.order.service.config.JmsConfig;
 import guru.sfg.beer.order.service.domain.BeerOrderEventEnum;
 import guru.sfg.beer.order.service.domain.BeerOrderStatusEnum;
 import guru.sfg.beer.order.service.services.BeerOrderManagerImpl;
-import guru.sfg.brewery.model.events.AllocateOrderFailed;
+import guru.sfg.brewery.model.event.AllocateOrderFailed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;

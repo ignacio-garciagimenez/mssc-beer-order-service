@@ -2,7 +2,7 @@ package guru.sfg.beer.order.service.services.listeners;
 
 import guru.sfg.beer.order.service.config.JmsConfig;
 import guru.sfg.beer.order.service.services.BeerOrderManager;
-import guru.sfg.brewery.model.events.BeerOrderValidationResult;
+import guru.sfg.brewery.model.event.BeerOrderValidationResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;

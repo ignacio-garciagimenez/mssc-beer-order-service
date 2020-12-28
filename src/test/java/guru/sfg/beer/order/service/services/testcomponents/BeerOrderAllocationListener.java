@@ -2,13 +2,12 @@ package guru.sfg.beer.order.service.services.testcomponents;
 
 import guru.sfg.beer.order.service.config.JmsConfig;
 import guru.sfg.brewery.model.BeerOrderDto;
-import guru.sfg.brewery.model.events.AllocateOrderRequest;
-import guru.sfg.brewery.model.events.AllocateOrderResult;
+import guru.sfg.brewery.model.event.AllocateOrderRequest;
+import guru.sfg.brewery.model.event.AllocateOrderResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 @Component
